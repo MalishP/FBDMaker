@@ -1,0 +1,13 @@
+﻿<Application x:Class="FBDMaker.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResDictFBDT.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <XmlDataProvider x:Key="QualityList" Source="dat/QualityList.xml" XPath="QualityList/Quality"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
