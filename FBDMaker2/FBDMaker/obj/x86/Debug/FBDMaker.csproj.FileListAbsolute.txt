@@ -19,3 +19,24 @@ D:\VS\FBDMaker2\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.Properties.Resources.r
 D:\VS\FBDMaker2\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.csproj.GenerateResource.Cache
 D:\VS\FBDMaker2\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.exe
 D:\VS\FBDMaker2\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.pdb
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.exe
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.pdb
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\bin\Debug\FBDMaker.exe
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\bin\Debug\FBDMaker.pdb
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\bin\Debug\FB2Library.dll
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\bin\Debug\SevenZipSharp.dll
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\bin\Debug\FB2Library.pdb
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.csprojResolveAssemblyReference.cache
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\App.baml
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\MainWindow.g.cs
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\GenreTree.g.cs
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\App.g.cs
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker_MarkupCompile.cache
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker_MarkupCompile.lref
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\MainWindow.baml
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\GenreTree.baml
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\ResDictFBDT.baml
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.g.resources
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.Properties.Resources.resources
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\FBDMaker.csproj.GenerateResource.Cache

@@ -12,3 +12,8 @@ D:\VS\FBDMaker2\fb2librarynet\bin\Debug\FB2Library.pdb
 D:\VS\FBDMaker2\fb2librarynet\obj\Debug\FB2Library.csprojResolveAssemblyReference.cache
 D:\VS\FBDMaker2\fb2librarynet\obj\Debug\FB2Library.dll
 D:\VS\FBDMaker2\fb2librarynet\obj\Debug\FB2Library.pdb
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\fb2librarynet\bin\Debug\FB2Library.dll
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\fb2librarynet\bin\Debug\FB2Library.pdb
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csprojResolveAssemblyReference.cache
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\fb2librarynet\obj\Debug\FB2Library.dll
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\fb2librarynet\obj\Debug\FB2Library.pdb

@@ -14,6 +14,7 @@ using System.Drawing.Imaging;
 using PDFLibNet;
 using System.Collections.ObjectModel;
 
+
 namespace FBDMaker
 {
     public class FolderTreeInf
@@ -375,7 +376,7 @@ namespace FBDMaker
         //TODO добавит нормальную обработку "старых" fbd в архивах в папке
         public void SaveLibInf(WorkOptions Option)
         {
-            MemoryStream memFBD ;
+           // MemoryStream memFBD ;
             //bool OnlyHeader=true;
             bool DeleteFBDFile = false;
             string pathFBD;
@@ -415,8 +416,10 @@ namespace FBDMaker
             if(Option.RenameFiles_Yes)
             {
                 string NewName = string.Empty;
-                NewName = LibInfo.Book.Avtor.List.Count != 0 ? LibInfo.Book.Avtor.List.First().ListName + " - " : NewName;
-                NewName += !string.IsNullOrEmpty(LibInfo.Book.Title) ? LibInfo.Book.Title : string.Empty;
+                NewName = LibInfo.FileName2Rename;
+
+                //NewName += !string.IsNullOrEmpty(LibInfo.Publisher.Title) ? LibInfo.Publisher.Title : !string.IsNullOrEmpty(LibInfo.Book.Title) ? LibInfo.Book.Title : string.Empty;
+                //NewName += LibInfo.Publisher.Year != null ? " (" + LibInfo.Publisher.Year.ToString() + ")" : string.Empty;
                 if (!string.IsNullOrEmpty(NewName))
                 {
                     string NewFullName=Path.Combine(Path.GetDirectoryName(FPath),NewName+(IsFolder?string.Empty: FType ));
@@ -464,9 +467,9 @@ namespace FBDMaker
                 {
                     if (Option.MakeArch_Yes && !IsArch)
                     {
-                        pathFBD = string.Empty;
-                        pathFBD = LibInfo.Book.Avtor.List.Count != 0 ? LibInfo.Book.Avtor.List.First().ListName + " - " : pathFBD;
-                        pathFBD += !string.IsNullOrEmpty(LibInfo.Book.Title) ? LibInfo.Book.Title : string.Empty;
+                        pathFBD = LibInfo.FileName2Rename; //string.Empty;
+                        //pathFBD = LibInfo.Book.Avtor.List.Count != 0 ? LibInfo.Book.Avtor.List.First().ListName + " - " : pathFBD;
+                        //pathFBD += !string.IsNullOrEmpty(LibInfo.Book.Title) ? LibInfo.Book.Title : string.Empty;
                         pathFBD += !string.IsNullOrEmpty(pathFBD) ? ".fbd" : string.Empty;
                         pathFBD=!string.IsNullOrEmpty(pathFBD) ? Path.GetDirectoryName(FPath) + "\\"+pathFBD:Path.ChangeExtension(FPath, ".fbd");
                     }
@@ -483,9 +486,9 @@ namespace FBDMaker
                     //FileCompres.ArchiveFormat = OutArchiveFormat.Zip;
                     //FileCompres.CompressionMode = CompressionMode.Create;
                     //string[] listADD = new string[] { FPath };
-                    string NameArch = string.Empty;
-                    NameArch = LibInfo.Book.Avtor.List.Count != 0 ? LibInfo.Book.Avtor.List.First().ListName + " - " : NameArch;
-                    NameArch += !string.IsNullOrEmpty(LibInfo.Book.Title) ? LibInfo.Book.Title : string.Empty;
+                    string NameArch = LibInfo.FileName2Rename;//string.Empty;
+                    //NameArch = LibInfo.Book.Avtor.List.Count != 0 ? LibInfo.Book.Avtor.List.First().ListName + " - " : NameArch;
+                    //NameArch += !string.IsNullOrEmpty(LibInfo.Book.Title) ? LibInfo.Book.Title : string.Empty;
                     NameArch += !string.IsNullOrEmpty(NameArch) ? ".zip" : Path.ChangeExtension(Path.GetFileName(FPath), ".zip");
                     string ArchPath = Path.GetDirectoryName(FPath) + "\\" + NameArch;
                     AddFileToArch(ArchPath, FPath, Option.FolderRootAddArch_Yes);
@@ -623,13 +626,13 @@ namespace FBDMaker
                 if (IsArch)
                 {
                         
-                    FileStream tempstr = File.OpenRead(FPath);
-                    MemoryStream tmpMemStrea = new MemoryStream();
-                    tempstr.CopyTo(tmpMemStrea);           //FileStream(PathFBD, FileMode.Open); 
+                    //FileStream tempstr = File.OpenRead(FPath);
+                    //MemoryStream tmpMemStrea = new MemoryStream();
+                    //tempstr.CopyTo(tmpMemStrea);           //FileStream(PathFBD, FileMode.Open); 
 
-                    SevenZipExtractor se = new SevenZipExtractor(tmpMemStrea);
-                    tempstr.Close();
-                    tempstr.Dispose();
+                    SevenZipExtractor se = new SevenZipExtractor(FPath); //new SevenZipExtractor(tmpMemStrea);
+                    //tempstr.Close();
+                    //tempstr.Dispose();
                     if (se.ArchiveFileNames.Where(sf => Path.GetExtension(sf) == ".fbd").Any())
                     {
                         foreach (string s in se.ArchiveFileNames.Where(sf => Path.GetExtension(sf) == ".fbd")) //.First()
@@ -657,8 +660,8 @@ namespace FBDMaker
                         }
                     }
                     se.Dispose();
-                    tmpMemStrea.Close();
-                    tmpMemStrea.Dispose();
+                    //tmpMemStrea.Close();
+                    //tmpMemStrea.Dispose();
                 }//вытаскивание в поток из архива
                 else
                     if (FType.ToLower() == ".fb2")

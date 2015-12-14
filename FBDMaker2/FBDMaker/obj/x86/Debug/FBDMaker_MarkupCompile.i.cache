@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\VS\FBDMaker2\FBDMaker2\FBDMaker\obj\x86\Debug\
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\
 FBDMaker
 none
 false
 DEBUG;TRACE
-D:\VS\FBDMaker2\FBDMaker2\FBDMaker\App.xaml
+C:\Users\osipov.pv\Documents\Visual Studio 2013\Projects\FBDMaker\FBDMaker2\FBDMaker\App.xaml
 31829948269
 
-20-26515968
-19804532904
+20-1259521585
+19-1627188087
 MainWindow.xaml;GenreTree.xaml;ResDictFBDT.xaml;
 
-True
+False
 

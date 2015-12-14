@@ -45,7 +45,27 @@ namespace FBDMaker
 
         public string FileName2Rename
         {
-            get { return Book.FileName2Rename; }
+            get { 
+                //return Book.FileName2Rename; 
+                string retstr = string.Empty;
+                string title_r = string.Empty;
+                string year_r = string.Empty;
+                foreach (LibPerson a in Book.Avtor.List)
+                {
+                    retstr += ", " + a.ListName;
+                }
+                if (!string.IsNullOrEmpty(retstr) && retstr.Length > 2)
+                    retstr = retstr.Substring(2);
+                else
+                    retstr = string.Empty;    
+                title_r = !string.IsNullOrEmpty(Publisher.Title) ? Publisher.Title : !string.IsNullOrEmpty(Book.Title) ? Book.Title : string.Empty;
+                year_r = Publisher.Year != null ? " (" + Publisher.Year.ToString() + ")" : !string.IsNullOrEmpty(Book.s_BookDate) ? " (" + Book.s_BookDate + ")" : string.Empty;
+                retstr = (!string.IsNullOrEmpty(retstr) ? retstr + " - " : string.Empty) + title_r + year_r;
+                
+                foreach(char c in Path.GetInvalidPathChars().Union(Path.GetInvalidFileNameChars()))
+                    retstr = retstr.Replace(c, '.');
+                return retstr;
+            }
         }
         internal void FillFromFBD(Stream FileFBD)
         {
