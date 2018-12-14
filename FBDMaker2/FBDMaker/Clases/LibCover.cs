@@ -36,7 +36,7 @@ namespace FBDMaker
         }
         //public string Base64 { get; set; }
         //public ImageSource CoverIS { get; set; }
-        private Byte[] BinaryData { get; set; }
+        public Byte[] BinaryData { get; set; }
         public string CoverName {get;set;}
         public string CoverType { get; set; }
         public ImageSource Cover

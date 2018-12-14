@@ -61,7 +61,7 @@ namespace FBDMaker
         public RenameFilesEnum RenameFiles { get; set; }
         public WorkOptions ()
         {
-            Mask = new StringMaskParser("%nl1 - %tl");
+            Mask = new StringMaskParser("%av - %tl");
             MultySelOperation = MultySelOperationEnum.CopyField;
             MakeBookArch = MakeBookArchEnum.MakeBookArch_Yes;
             InsertFBDArch = InsertFBDArchEnum.InsertFBDArch_Yes;

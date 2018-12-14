@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
-
+using DjvuNet;
+using PdfiumLight;//PDFLibNet;
 
 
 namespace FBDMaker
@@ -95,6 +96,15 @@ namespace FBDMaker
             listpers.Add(pers);
         }
 
+        private void SitchNF_Click(object sender, RoutedEventArgs e)
+        {
+            // ( (FolderTreeInf)treeView2.SelectedItem).LibInfo.Avtor.Add(new LibPerson());
+            System.Windows.Controls.Button ClickButton = (System.Windows.Controls.Button)sender;
+            LibPerson pers = (LibPerson)ClickButton.Tag;
+            string tmpstr = pers.Last;
+            pers.Last= pers.First;
+            pers.First = tmpstr;
+        }
         private void DelAvtor_Click(object sender, RoutedEventArgs e)
         {
             //((FolderTreeInf)treeView2.SelectedItem).LibInfo.Avtor.Remove((LibPerson)listAvtor.SelectedItem);
@@ -251,9 +261,63 @@ namespace FBDMaker
             }
         }
 
+        private void GetFromText_Click(object sender, RoutedEventArgs e)
+        {
+            
 
-        //Template="{DynamicResource TreeViewControlTemplate1}" ItemTemplate="{DynamicResource DataTemplate1}"
-        // <ColumnDefinition Width="Auto" MinWidth="19" />
+            if (MultiSel == null)
+            {
+                FolderTreeInf TextFile = (FolderTreeInf)treeView2.SelectedItem;
+                string PathTextFile = TextFile.FPath;
+                string textFType = System.IO.Path.GetExtension(PathTextFile);
+                string TextFromBook=string.Empty;
+                if (textFType.ToLower() == ".djvu" || textFType.ToLower() == ".djv" || textFType.ToLower() == ".pdf" )
+                {
+                    if (textFType.ToLower() == ".pdf")
+                    {
+
+                        PdfDocument document = new PdfDocument(PathTextFile);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            PdfPage page = document.GetPage(i);
+                            TextFromBook += page.GetPdfText();
+                            page.Dispose();
+                        }
+                        document.Dispose();
+                    }
+                    if (textFType.ToLower() == ".djvu" || textFType.ToLower() == ".djv")
+                    {
+                        DjvuDocument document = new DjvuDocument(PathTextFile);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            var page = document.Pages[i];
+                            TextFromBook += page.Text;
+                          }
+ 
+                    }
+                    if (!string.IsNullOrWhiteSpace(TextFromBook))
+                    {
+                        FieldFromText FieldFromTextWin;
+                        FieldFromTextWin = new FieldFromText(TextFile.LibInfo, TextFromBook);
+                        FieldFromTextWin.ShowDialog();
+                    }
+                }
+            }
+        }
+
+        private void GetFromGoogle_Click(object sender, RoutedEventArgs e)
+        {
+            if (MultiSel == null)
+            {
+                FolderTreeInf TextFile = (FolderTreeInf)treeView2.SelectedItem;
+                GBooksSearch gBooksSearchWin = new GBooksSearch(TextFile.LibInfo);
+                gBooksSearchWin.ShowDialog();
+            }
+
+
+            //Template="{DynamicResource TreeViewControlTemplate1}" ItemTemplate="{DynamicResource DataTemplate1}"
+            // <ColumnDefinition Width="Auto" MinWidth="19" />
+        }
     }
 
 }

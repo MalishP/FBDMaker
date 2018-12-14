@@ -8,7 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         x:Class="FBDMaker.MainWindow"
         Name="MWin"
-        Title="MainWindow" Height="729" Width="1021">
+        Title="MainWindow" Height="729" Width="1019">
     <Window.Resources>
 
         <!--<ResourceDictionary Source="ResDictFBDT.xaml"/>-->
@@ -137,14 +137,14 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column ="0"  FontSize="10" Content="{Binding Path=Tag, RelativeSource={RelativeSource FindAncestor, AncestorType=GroupBox, AncestorLevel=1}}" />
-                        <Button Content=" - " Grid.Column="1" Name="DelAvtor" Click="DelAvtor_Click" Tag="{Binding ElementName=listAvtor, Path=SelectedItem}"/>
-                        <Button Content=" + " Grid.Column="2" Name="AddAvtor" Click="AddAvtor_Click" />
+                        <Label Grid.Column ="0"  FontSize="10" Content="{Binding Tag, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type GroupBox}}}" />
+                        <Button Content=" - " Grid.Column="1" x:Name="DelAvtor" Click="DelAvtor_Click" Tag="{Binding SelectedItem, ElementName=listAvtor}"/>
+                        <Button Content=" + " Grid.Column="2" x:Name="AddAvtor" Click="AddAvtor_Click" />
                     </Grid>
-                    <ListBox Grid.Row="1" Name="listAvtor" ItemsSource="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=GroupBox, AncestorLevel=1}}" FontSize="10" ItemTemplate="{StaticResource lb_ListAvtor}" SelectedIndex="0" />
+                    <ListBox Grid.Row="1" x:Name="listAvtor" ItemsSource="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type GroupBox}}}" FontSize="10" ItemTemplate="{StaticResource lb_ListAvtor}" SelectedIndex="0" />
 
                 </Grid>
-                <Grid Grid.Column="1" DataContext="{Binding ElementName=listAvtor, Path=SelectedItem}">
+                <Grid Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=listAvtor}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -160,10 +160,18 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Фамилия" Name="labelLast"  Grid.Column="0" Width="{Binding ElementName=labelMidle, Path=ActualWidth}" />
-                            <TextBox Name="textBoxLast" Text="{Binding Path=Last}"  Grid.Column="1"/>
-                            <Label Content="Имя" Name="labelFirst"  Grid.Column="2"  Width="{Binding ElementName=labelHP, Path=ActualWidth}"/>
-                            <TextBox Name="textBoxFirst" Text="{Binding Path=First}"  Grid.Column="3"/>
+                            <Label Content="Фамилия" x:Name="labelLast"  Grid.Column="0" Width="{Binding ActualWidth, ElementName=labelMidle}" />
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="textBoxLast" Text="{Binding Last}"  Grid.Column="0"/>
+                                <Button Content="&lt;-&gt;" Grid.Column="1" x:Name="SitchNF" Click="SitchNF_Click" Tag="{Binding SelectedItem, ElementName=listAvtor}"/>
+                            </Grid>
+
+                            <Label Content="Имя" x:Name="labelFirst"  Grid.Column="2"  Width="{Binding ActualWidth, ElementName=labelHP}"/>
+                            <TextBox x:Name="textBoxFirst" Text="{Binding First}"  Grid.Column="3"/>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -172,10 +180,10 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Отчество" Name="labelMidle"  Grid.Column="0"/>
-                            <TextBox Name="textBoxMidle" Text="{Binding Path=Middle}"  Grid.Column="1"/>
-                            <Label Content="Ник" Name="labelNick"  Grid.Column="2" Width="{Binding ElementName=labelHP, Path=ActualWidth}" />
-                            <TextBox Name="textBoxNick" Text="{Binding Path=Nick}"  Grid.Column="3"/>
+                            <Label Content="Отчество" x:Name="labelMidle"  Grid.Column="0"/>
+                            <TextBox x:Name="textBoxMidle" Text="{Binding Middle}"  Grid.Column="1"/>
+                            <Label Content="Ник" x:Name="labelNick"  Grid.Column="2" Width="{Binding ActualWidth, ElementName=labelHP}" />
+                            <TextBox x:Name="textBoxNick" Text="{Binding Nick}"  Grid.Column="3"/>
                         </Grid>
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
@@ -184,25 +192,25 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Email" Name="labelEmail"  Grid.Column="0" Width="{Binding ElementName=labelMidle, Path=ActualWidth}" />
-                            <TextBox Name="textBoxEmail" Text="{Binding Path=Email}"  Grid.Column="1"/>
-                            <Label Content="Домашняя" Name="labelHP"  Grid.Column="2"/>
-                            <TextBox Name="textBoxHP" Text="{Binding Path=HomePages}"  Grid.Column="3"/>
+                            <Label Content="Email" x:Name="labelEmail"  Grid.Column="0" Width="{Binding ActualWidth, ElementName=labelMidle}" />
+                            <TextBox x:Name="textBoxEmail" Text="{Binding Email}"  Grid.Column="1"/>
+                            <Label Content="Домашняя" x:Name="labelHP"  Grid.Column="2"/>
+                            <TextBox x:Name="textBoxHP" Text="{Binding HomePages}"  Grid.Column="3"/>
                         </Grid>
                         <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Тип авторства" Name="labelType"  Grid.Column="0"  />
-                            <ComboBox Grid.Column="1" IsEditable="True" SelectedIndex="0" Text="{Binding Path=PersonType}">
+                            <Label Content="Тип авторства" x:Name="labelType"  Grid.Column="0"  />
+                            <ComboBox Grid.Column="1" IsEditable="True" SelectedIndex="0" Text="{Binding PersonType}">
                                 <ComboBoxItem Content="Под редакцией" />
                                 <ComboBoxItem Content="Редактор" />
                                 <ComboBoxItem Content="Главный редактор" />
                                 <ComboBoxItem Content="Составитель" />
                             </ComboBox>
                         </Grid>
-                        <Expander Header="На родном языке" Name="Exp_scr" Grid.Row="4" >
+                        <Expander Header="На родном языке" x:Name="Exp_scr" Grid.Row="4" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -213,8 +221,8 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Фамилия " Name="labelLastScr"  Grid.Column="0"/>
-                                    <TextBox Name="textBoxLastScr" Text="{Binding Path=LastScr}"  Grid.Column="1"/>
+                                    <Label Content="Фамилия " x:Name="labelLastScr"  Grid.Column="0"/>
+                                    <TextBox x:Name="textBoxLastScr" Text="{Binding LastScr}"  Grid.Column="1"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
@@ -223,10 +231,10 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Имя" Name="labelFirstScr"  Grid.Column="0" Width="{Binding ElementName=labelLastScr, Path=ActualWidth}" />
-                                    <TextBox Name="textBoxFirstScr" Text="{Binding Path=FirstScr}"  Grid.Column="1"/>
-                                    <Label Content="Отчество" Name="labelMiddleScr"  Grid.Column="2"  />
-                                    <TextBox Name="textBoxMiddleScr" Text="{Binding Path=MiddleScr}"  Grid.Column="3"/>
+                                    <Label Content="Имя" x:Name="labelFirstScr"  Grid.Column="0" Width="{Binding ActualWidth, ElementName=labelLastScr}" />
+                                    <TextBox x:Name="textBoxFirstScr" Text="{Binding FirstScr}"  Grid.Column="1"/>
+                                    <Label Content="Отчество" x:Name="labelMiddleScr"  Grid.Column="2"  />
+                                    <TextBox x:Name="textBoxMiddleScr" Text="{Binding MiddleScr}"  Grid.Column="3"/>
                                 </Grid>
                             </Grid>
                         </Expander>
@@ -482,11 +490,15 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Content="Название" FontSize="10" />
                                     <TextBox Grid.Column="1" Name="textTitle" Text ="{Binding Path=LibInfo.Book.Title}" />
+                                    <Button x:Name="GetFromText" Grid.Column="2" Content="T" Width="15" Click="GetFromText_Click" />
+                                    <Button x:Name="GetFromGoogle" Grid.Column="3" Content="G" Width="15" Margin="0,0,10,0" Click="GetFromGoogle_Click" />
                                 </Grid>
-                                <GroupBox Header="groupBox1"  Name="groupBox1" Template="{StaticResource PersonList}" Grid.Row="1" DataContext="{Binding Path=LibInfo.Book.Avtor.List}" Tag="Авторы" />
+                                <GroupBox Header="groupBox1"  Name="groupBox1" Template="{StaticResource PersonList}" Grid.Row="1" DataContext="{Binding Path=LibInfo.Book.Avtor.List}" Tag="Авторы" Margin="0,0,10,0" />
                                 <Grid Grid.Row="2">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -529,7 +541,7 @@
                                             <RowDefinition Height="100"/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" Content="Аннотация" FontSize="10" />
-                                        <TextBox Grid.Row="1" Name="textBox4" TextWrapping="Wrap" AcceptsReturn="True"  Text="{Binding Path=LibInfo.Book.Annot}" />
+                                        <TextBox Grid.Row="1" Name="textBox4" TextWrapping="Wrap" AcceptsReturn="True"  Text="{Binding Path=LibInfo.Book.Annot}" Width="587" />
                                     </Grid>
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>

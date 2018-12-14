@@ -223,6 +223,21 @@ namespace FBDMaker
                 List.Add(SP);
             }
          }
+
+        public void ParseString(string Source)
+        {
+            string[] avtors = Source.Split(',');
+            foreach (string s in avtors)
+            {
+                LibPerson pers = new LibPerson();
+                string[] av = s.Split(new char[] { ' ', '.' }, 3);
+                Array.Resize(ref av, 3);
+                pers.First = string.IsNullOrEmpty(av[0]) ? string.Empty : av[0];
+                pers.Last = string.IsNullOrEmpty(av[1]) ? string.Empty : av[1] ;
+                pers.Middle = string.IsNullOrEmpty(av[2]) ? string.Empty : av[2];
+                List.Add(pers);
+            }
+        }
     }
 
 
@@ -266,6 +281,7 @@ namespace FBDMaker
             {
                 _First.BookLang = value;
                 NotifyPropertyChanged("ListName");
+                NotifyPropertyChanged("First");
             }
         }
         public string Middle
@@ -284,6 +300,7 @@ namespace FBDMaker
             {
                 _Last.BookLang = value;
                 NotifyPropertyChanged("ListName");
+                NotifyPropertyChanged("Last");
             }
         }
         public string FirstScr

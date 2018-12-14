@@ -11,7 +11,7 @@ using System.Diagnostics;
 using DjvuNet;
 using DjvuNet.Graphics;
 using System.Drawing.Imaging;
-using PDFLibNet;
+using PdfiumLight;//PDFLibNet;
 using System.Collections.ObjectModel;
 
 
@@ -574,14 +574,19 @@ namespace FBDMaker
                 if (CoverFType.ToLower() == ".pdf")
                 {
 
-                    PDFWrapper doc = new PDFWrapper();
-                    doc.LoadPDF(CoverPathImg);
-                    doc.ExportJpg(tmppath, N_image, N_image, 150, 90, -1);
+                    //PDFWrapper doc = new PDFWrapper();
+                    //doc.LoadPDF(CoverPathImg);
+                    //doc.ExportJpg(tmppath, N_image, N_image, 150, 90, -1);
+                    PdfDocument document = new PdfDocument(CoverPathImg);
+                    PdfPage page = document.GetPage(N_image-1);
+                    var renderedPage = page.Render(90,150);
+                    renderedPage.Save(tmppath, ImageFormat.Jpeg);
                     CoverPath = CoverPathImg;
                     if (N_image == 3)
                         N_image = 1;
                     else N_image++;
-                    doc.Dispose();
+                    page.Dispose();
+                    document.Dispose();
                 }
                 if (CoverFType.ToLower() == ".djvu" || CoverFType.ToLower() == ".djv")
                 {

@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PdfiumLight</name>
+    </assembly>
+    <members>
+        <member name="M:PdfiumLight.NativeMethods.FPDF_LoadCustomDocument(System.IO.Stream,System.String,System.Int32)">
+            <summary>
+            Opens a document using a .NET Stream. Allows opening huge
+            PDFs without loading them into memory first.
+            </summary>
+            <param name="input">The input Stream. Don't dispose prior to closing the pdf.</param>
+            <param name="password">Password, if the PDF is protected. Can be null.</param>
+            <param name="id">Retrieves an IntPtr to the COM object for the Stream. The caller must release this with Marshal.Release prior to Disposing the Stream.</param>
+            <returns>An IntPtr to the FPDF_DOCUMENT object.</returns>
+        </member>
+        <member name="T:PdfiumLight.PdfDocument">
+            <summary>
+            Represents a PDF document.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfDocument.Bookmarks">
+            <summary>
+            The Bookmarks of this PDF document. 
+            </summary>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of PdfDocument
+            </summary>
+            <param name="path">The path to the PDF-file</param>
+            <param name="password">Password to decrypt PDF</param>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.#ctor(System.IO.Stream,System.String)">
+            <summary>
+            Initializes a new instance of PdfDocument a .NET Stream. Allows opening huge PDFs without loading them into memory first.
+            </summary>
+            <param name="stream">The input Stream. Don't dispose prior to closing the PDF.</param>
+            <param name="password">Password to decrypt PDF</param>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.GetPageSize">
+            <summary>
+            This method returns the dimension of the pages in this document without loading them into memory first
+            </summary>
+            <returns>The List of page dimensions</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.GetPageSize(System.Int32)">
+            <summary>
+            This method returns the dimension of a page in this document without loading it into memory first
+            </summary>
+            <param name="pageNumber">The page number of the page you want to retrice the dimensions for</param>
+            <returns>Dimesions as SizeF</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.GetPage(System.Int32)">
+            <summary>
+            This method will load and return the sepecific page
+            </summary>
+            <param name="page">The null-based index of the page</param>
+            <returns>A new PdfPage</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.PageCount">
+            <summary>
+            Returns the page count of the document. This will call a native Pdfium function.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PdfiumLight.PdfDocument.GetInformation">
+            <summary>
+            Dtailed meta informations from the PDF document
+            </summary>
+            <returns>A PdfInformation containing the metadata</returns>
+        </member>
+        <member name="T:PdfiumLight.PdfPage">
+            <summary>
+            Represents a page of a PDF document.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPage.Page">
+            <summary>
+            Handle to the page.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPage.TextPage">
+            <summary>
+            Handle to the text page
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPage.Width">
+            <summary>
+            Width of the page in pt
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPage.Height">
+            <summary>
+            Height of th page in pt
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPage.PageNumber">
+            <summary>
+            The index og this page in the document
+            </summary>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.#ctor(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            Initializes a new instance of PdfPage
+            </summary>
+            <param name="document">The PDF document</param>
+            <param name="form"></param>
+            <param name="pageNumber">Number of this page in the document</param>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.Render(System.Int32,System.Int32,System.Single,System.Single,PdfiumLight.PdfRotation,PdfiumLight.PdfRenderFlags)">
+            <summary>
+            Renders the page.
+            </summary>
+            <param name="width">Render width in px</param>
+            <param name="height">Render height in px</param>
+            <param name="dpiX"></param>
+            <param name="dpiY"></param>
+            <param name="rotate">Specify the rotation of the rendered page</param>
+            <param name="flags">Render flags</param>
+            <returns>The rendered page as an Image</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.GetCharIndexAtPos(System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the index of the character at the provided position
+            </summary>
+            <param name="x">x</param>
+            <param name="y">y</param>
+            <param name="tol">The tolerance</param>
+            <returns>The zero-based index of the character at, or nearby the point (x,y). If there is no character at or nearby the point, return value will be -1. If an error occurs, -3 will be returned.</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.PointToPdf(System.Drawing.Point,System.Int32,System.Int32)">
+            <summary>
+            Transforms a Point in device coordinates to PDF coordinates. 
+            </summary>
+            <param name="point">The point in device coordinates</param>
+            <param name="renderWidth">Render with of the page</param>
+            <param name="renderHeight">Render height of the page</param>
+            <returns>The transformed Point</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.RectangleToPdf(System.Drawing.Rectangle,System.Int32,System.Int32)">
+            <summary>
+            Transforms a Rectangle in device coordinates to PDF coordinates. 
+            Will also make sure to return a Rectangle with positive height and width.
+            </summary>
+            <param name="rect">The Rectangle in device coordinates</param>
+            <param name="renderWidth">Render with of the page</param>
+            <param name="renderHeight">Render height of the page</param>
+            <returns>The transformed Rectangle</returns>
+        </member>
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:PdfiumLight.PdfPage.GetPdfText" ignoriert -->
+        <!-- Ungültiger XML-Kommentar wurde für den Member "M:PdfiumLight.PdfPage.GetPdfText(System.Int32,System.Int32)" ignoriert -->
+        <member name="M:PdfiumLight.PdfPage.RotatePage(PdfiumLight.PdfRotation)">
+            <summary>
+            Rotates the page.
+            </summary>
+            <param name="rotation">Specify the rotation.</param>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.GetTextBounds(System.Int32,System.Int32)">
+            <summary>
+            Get the bounds of the text (specified by index and length) from the page. 
+            </summary>
+            <param name="startIndex">The start index of the text</param>
+            <param name="length">The length of the text</param>
+            <returns>List of the bounds for the text</returns>
+        </member>
+        <member name="M:PdfiumLight.PdfPage.RectangleFromPdf(System.Drawing.RectangleF,System.Int32,System.Int32)">
+            <summary>
+            Transforms a Rectangle in PDF coordinates to device coordinates. 
+            Will also make sure to return a Rectangle with positive height and width.
+            </summary>
+            <param name="rect">The rect in PDF coordinates</param>
+            <param name="renderWidth">Render with of the page</param>
+            <param name="renderHeight">Render height of the page</param>
+            <returns>The transformed Rectangle</returns>
+        </member>
+        <member name="T:PdfiumLight.PdfInformation">
+            <summary>
+            Contains text from metadata of the document.
+            </summary>
+        </member>
+        <member name="T:PdfiumLight.PdfPageLink">
+            <summary>
+            Describes a link on a page.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPageLink.Bounds">
+            <summary>
+            The location of the link.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPageLink.TargetPage">
+            <summary>
+            The target of the link.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPageLink.Uri">
+            <summary>
+            The target URI of the link.
+            </summary>
+        </member>
+        <member name="M:PdfiumLight.PdfPageLink.#ctor(System.Drawing.RectangleF,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Creates a new instance of the PdfPageLink class.
+            </summary>
+            <param name="bounds">The location of the link</param>
+            <param name="targetPage">The target page of the link</param>
+            <param name="uri">The target URI of the link</param>
+        </member>
+        <member name="T:PdfiumLight.PdfPageLinks">
+            <summary>
+            Describes all links on a page.
+            </summary>
+        </member>
+        <member name="P:PdfiumLight.PdfPageLinks.Links">
+            <summary>
+            All links of the page.
+            </summary>
+        </member>
+        <member name="M:PdfiumLight.PdfPageLinks.#ctor(System.Collections.Generic.IList{PdfiumLight.PdfPageLink})">
+            <summary>
+            Creates a new instance of the PdfPageLinks class.
+            </summary>
+            <param name="links">The links on the PDF page.</param>
+        </member>
+        <member name="T:PdfiumLight.PdfRenderFlags">
+            <summary>
+            Flags that influence the page rendering process.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.None">
+            <summary>
+            No flags.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.ForPrinting">
+            <summary>
+            Render for printing.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.Annotations">
+            <summary>
+            Set if annotations are to be rendered.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.LcdText">
+            <summary>
+            Set if using text rendering optimized for LCD display.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.NoNativeText">
+            <summary>
+            Don't use the native text output available on some platforms.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.Grayscale">
+            <summary>
+            Grayscale output.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.LimitImageCacheSize">
+            <summary>
+            Limit image cache size.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.ForceHalftone">
+            <summary>
+            Always use halftone for image stretching.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.Transparent">
+            <summary>
+            Render with a transparent background.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRenderFlags.CorrectFromDpi">
+            <summary>
+            Correct height/width for DPI.
+            </summary>
+        </member>
+        <member name="T:PdfiumLight.PdfRotation">
+            <summary>
+            Specifies the rotation of pages shown in the PDF renderer.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRotation.Rotate0">
+            <summary>
+            Rotates the output 0 degrees.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRotation.Rotate90">
+            <summary>
+            Rotates the output 90 degrees.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRotation.Rotate180">
+            <summary>
+            Rotates the output 180 degrees.
+            </summary>
+        </member>
+        <member name="F:PdfiumLight.PdfRotation.Rotate270">
+            <summary>
+            Rotates the output 270 degrees.
+            </summary>
+        </member>
+    </members>
+</doc>

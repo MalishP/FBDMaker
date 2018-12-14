@@ -391,6 +391,7 @@ namespace FBDMaker
                         BookSequence.List.Add(new LibSequence(null, Dict[s], num_seq));
                         break;
                     case "av":
+                        Avtor.ParseString(Dict["av"]);
                         break;
                     case "nl1":
                         mFirst = (!(string.IsNullOrEmpty(Dict["nf1"]) || string.IsNullOrWhiteSpace(Dict["nf1"]))) ? Dict["nf1"] : string.Empty;

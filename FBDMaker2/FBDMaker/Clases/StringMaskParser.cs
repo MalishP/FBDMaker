@@ -63,6 +63,8 @@ namespace FBDMaker
             {
                 Dict[s] = groups[s].Value;
             }
+            if (string.IsNullOrEmpty(Dict["tl"]))
+                Dict["tl"] = Source;
         }
 
         protected static List<string> listKey;

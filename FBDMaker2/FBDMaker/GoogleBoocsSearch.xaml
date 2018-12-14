@@ -1,0 +1,110 @@
+﻿<Window x:Name="GoogleBooksSearch" x:Class="FBDMaker.GBooksSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FBDMaker"
+        mc:Ignorable="d"
+        Title="Поиск книги в google" Height="450" Width="800">
+    <Window.Resources>
+
+
+
+        <DataTemplate x:Key="DataTemplate1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{Binding Path=ResGBook.ImageLinks}" Width="50" />
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="{Binding Path=ResGBook.Authors}"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="223*"/>
+            <ColumnDefinition Width="569*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding FindTitle}" />
+                    <Label Content="Наименование"/>
+                </StackPanel>
+                <TextBox  Grid.Row="1" Text="{Binding Title2Find}"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding FindAuthor}" />
+                    <Label Content="Авторы"/>
+                </StackPanel>
+                <TextBox Grid.Row="3" Text="{Binding Author2Find}"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="4">
+                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding FindISBN}" />
+                    <Label Content="ISBN"/>
+                </StackPanel>
+                <TextBox Grid.Row="5" Text="{Binding ISBN2Find}"/>
+                <Button Content="Найти"  Grid.Row="6" VerticalAlignment="Top" Click="Button_Click" />
+
+            </Grid>
+            <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
+                <CheckBox Content="Переносить заголовок" IsChecked="{Binding isReturnTitle}" />
+                <CheckBox Content="Переносить аннотацию" IsChecked="{Binding isReturnDescription}" />
+                <CheckBox Content="Переносить авторов" IsChecked="{Binding isReturnAuthors}" />
+                <CheckBox Content="Переносить ISBN" IsChecked="{Binding isReturnISBN}" />
+                <CheckBox Content="Переносить издателя" IsChecked="{Binding isReturnPublisher}" />
+                <CheckBox Content="Переносить дату" IsChecked="{Binding isReturnDate}" />
+                <CheckBox Content="Переносить кол-во страниц" IsChecked="{Binding isReturnPageCount}" />
+                <CheckBox Content="Переносить обложку" IsChecked="{Binding isReturnImage}" />
+                <Button Content="Обратать" Click="Button_Click_1"    />
+            </StackPanel>
+        </Grid>
+        <ListBox x:Name="ListGB" Grid.Column="1" ItemsSource="{Binding ResGBook}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding Path=ImageLinks}" MaxWidth="150"   />
+                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <TextBlock Grid.Row="0" Text="{Binding Path=Authors}"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Path=Title}"/>
+                            <TextBlock Grid.Row="3" Text="{Binding Path=PublishInfo}"/>
+                            <TextBlock Grid.Row="4" Text="{Binding Path=ISBN}"/>
+                            <TextBlock Grid.Row="2" Text="{Binding Description, Mode=OneWay}" TextWrapping="Wrap" Grid.IsSharedSizeScope="True" ScrollViewer.CanContentScroll="True" MaxHeight="150"   />
+                            
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+    </Grid>
+</Window>

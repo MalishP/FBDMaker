@@ -1,0 +1,46 @@
+﻿<Window x:Name="window"  x:Class="FBDMaker.FieldFromText"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FBDMaker"
+        mc:Ignorable="d"
+        Title="Заполнить из текста
+        " Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"  VerticalAlignment="Top" >
+                <Button Content="Название" Width="Auto" Name="b_Title" Height="23" Click="b_Title_Click" />
+                <Button Content="Авторы" Width="Auto" Name="b_Avtor" Height="23" Click="b_Avtor_Click" />
+
+                <Button Content="Аннотация" Width="Auto" Name="b_Annot" Height="23" Click="b_Annot_Click" />
+                <Button Content="Дата Книги" Width="Auto" Name="b_BookDate" Height="23" Click="b_BookDate_Click" />
+                <Button Content="ISBN" Width="Auto" Name="b_ISBN" Height="23" Click="b_ISBN_Click" />
+
+                <Button Content="Издатель" Width="Auto" Name="b_Publisher" Height="23" Click="b_Publisher_Click" />
+                <Button Content="Город" Width="Auto" Name="b_City" Height="23" Click="b_City_Click" />
+                <Button Content="Год" Width="Auto" Name="b_Year" Height="23" Click="b_Year_Click" />
+                <Button Content="Переводчик" Width="Auto" Name="b_Translator" Height="23" Click="b_Translator_Click" />
+                <Button Content="УДК" Width="Auto" Name="b_UDK" Height="23" Click="b_UDK_Click" />
+                <Button Content="ББК" Width="Auto" Name="b_BBK" Height="23" Click="b_BBK_Click" />
+                <Button Content="ГРНТИ" Width="Auto" Name="b_GRNTI" Height="23" Click="b_GRNTI_Click" />
+                <Button Content="Страниц" Width="Auto" Name="b_Pages" Height="23" Click="b_Pages_Click" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Bottom">
+                <CheckBox Content="Имя Первое" Margin="0,0,5,0" IsChecked="{Binding isNameFirst, ElementName=window, Mode=TwoWay}" />
+                <CheckBox Content="Язык оригинала" Margin="0,0,5,0" IsChecked="{Binding isOriginalLang, ElementName=window, Mode=TwoWay}" />
+            </StackPanel>
+        </Grid>
+        <TextBox x:Name="TextBook" Grid.Column="1"  TextWrapping="Wrap"  />
+
+
+    </Grid>
+</Window>
