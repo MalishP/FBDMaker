@@ -50,7 +50,7 @@ namespace FBDMaker
         public string PublishedDate { get => string.IsNullOrWhiteSpace(GBook.VolumeInfo.PublishedDate) ? string.Empty : GBook.VolumeInfo.PublishedDate; }
         public string Description { get => string.IsNullOrWhiteSpace(GBook.VolumeInfo.Description) ? string.Empty : GBook.VolumeInfo.Description; }
         public string ISBN { get=> GBook.VolumeInfo.IndustryIdentifiers==null?string.Empty:string.Join(", ", GBook.VolumeInfo.IndustryIdentifiers.Select(i=>i.Type+":"+i.Identifier)); }
-        public int? PageCount { get => (int)GBook.VolumeInfo.PageCount; }
+        public int? PageCount { get => GBook.VolumeInfo.PageCount.HasValue?(int)GBook.VolumeInfo.PageCount:0; }
         public string Categories { get => GBook.VolumeInfo.Categories==null? string.Empty: string.Join(", ", GBook.VolumeInfo.Categories.Select(h => string.IsNullOrWhiteSpace(h) ? string.Empty : h)); }
         public Uri ImageLinks { get => GBook.VolumeInfo.ImageLinks!=null?GBook.VolumeInfo.ImageLinks.Thumbnail: new Uri("dat\\unnamed.jpg", UriKind.Relative); }
         public string Language { get => string.IsNullOrWhiteSpace(GBook.VolumeInfo.Language) ? string.Empty : GBook.VolumeInfo.Language; }

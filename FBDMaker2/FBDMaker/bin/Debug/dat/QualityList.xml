@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<QualityList>
+  <Quality Name="Ужасно" Kod="1"/>
+  <Quality Name="Плохо" Kod="2"/>
+  <Quality Name="Нормально" Kod="3"/>
+  <Quality Name="Хорошо" Kod="4"/>
+  <Quality Name="Идеально" Kod="5"/>
+</QualityList>
+

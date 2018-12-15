@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FBDMaker2",
+    "\\FBDMaker2\\FBDMaker",
+    "\\FBDMaker2\\packages"
   ],
+  "SelectedNode": "\\FBDMaker2\\FBDMaker\\MainWindow.xaml",
   "PreviewInSolutionExplorer": false
 }

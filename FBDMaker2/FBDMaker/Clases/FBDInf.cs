@@ -58,7 +58,7 @@ namespace FBDMaker
                     retstr = retstr.Substring(2);
                 else
                     retstr = string.Empty;    
-                title_r = !string.IsNullOrEmpty(Publisher.Title) ? Publisher.Title : !string.IsNullOrEmpty(Book.Title) ? Book.Title : string.Empty;
+                title_r = !string.IsNullOrEmpty(Book.Title) ? Book.Title : !string.IsNullOrEmpty(Publisher.Title) ? Publisher.Title : string.Empty;
                 year_r = Publisher.Year != null ? " (" + Publisher.Year.ToString() + ")" : !string.IsNullOrEmpty(Book.s_BookDate) ? " (" + Book.s_BookDate + ")" : string.Empty;
                 retstr = (!string.IsNullOrEmpty(retstr) ? retstr + " - " : string.Empty) + title_r + year_r;
                 

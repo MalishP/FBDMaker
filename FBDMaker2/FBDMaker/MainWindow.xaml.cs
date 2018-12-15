@@ -260,7 +260,7 @@ namespace FBDMaker
                     MultiSel.FillCoverNextPage();
             }
         }
-
+        //TODO считывание текстта в try/catch
         private void GetFromText_Click(object sender, RoutedEventArgs e)
         {
             

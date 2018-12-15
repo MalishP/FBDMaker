@@ -42,27 +42,27 @@ namespace FBDMaker
                 else
                 {
                     BookInfo.Book.Title += TextBook.SelectedText;
-                    BookInfo.Publisher.Title += TextBook.SelectedText;
+                    BookInfo.Publisher.Title += StringMaskParser.CleanInput( TextBook.SelectedText);
                 }
         }
 
         private void b_Annot_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Book.Annot += TextBook.SelectedText;
+                BookInfo.Book.Annot += StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_ISBN_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Publisher.ISBN += TextBook.SelectedText;
+                BookInfo.Publisher.ISBN += StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_Avtor_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
             {
-                string selText = TextBook.SelectedText;
+                string selText = StringMaskParser.CleanInput(TextBook.SelectedText);
                 BookInfo.Book.Avtor.ParseString(selText);
                 
             }
@@ -71,19 +71,19 @@ namespace FBDMaker
         private void b_BookDate_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Book.s_BookDate = TextBook.SelectedText;
+                BookInfo.Book.s_BookDate = StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_Publisher_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Publisher.Publisher = TextBook.SelectedText;
+                BookInfo.Publisher.Publisher = StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_City_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Publisher.City = TextBook.SelectedText;
+                BookInfo.Publisher.City = StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_Year_Click(object sender, RoutedEventArgs e)
@@ -100,7 +100,7 @@ namespace FBDMaker
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
             {
-                string selText = TextBook.SelectedText;
+                string selText = StringMaskParser.CleanInput(TextBook.SelectedText);
                 BookInfo.Publisher.Translator.ParseString(selText);                
             }
         }
@@ -109,19 +109,19 @@ namespace FBDMaker
         {
 
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Publisher.UDK= TextBook.SelectedText;
+                BookInfo.Publisher.UDK= StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_BBK_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Publisher.BBK = TextBook.SelectedText;
+                BookInfo.Publisher.BBK = StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_GRNTI_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TextBook.SelectedText))
-                BookInfo.Publisher.GRNTI = TextBook.SelectedText;
+                BookInfo.Publisher.GRNTI = StringMaskParser.CleanInput(TextBook.SelectedText);
         }
 
         private void b_Pages_Click(object sender, RoutedEventArgs e)
