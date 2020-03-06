@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-e:\Бекап\my\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\
+D:\VS\FBDMaker\FBDMaker2\FBDMaker\obj\x86\Debug\
 FBDMaker
 none
 false
 DEBUG;TRACE
-e:\Бекап\my\FBDMaker\FBDMaker2\FBDMaker\App.xaml
-51217257195
-21170110129
-26-438672708
-22-1009576959
-MainWindow.xaml;GenreTree.xaml;ResDictFBDT.xaml;FieldFromText.xaml;GoogleBoocsSearch.xaml;
+D:\VS\FBDMaker\FBDMaker2\FBDMaker\App.xaml
+6-1368826011
+2885775225
+22739826044
+22-324481290
+MainWindow.xaml;Properties\DesignTimeResources.xaml;GenreTree.xaml;ResDictFBDT.xaml;FieldFromText.xaml;GoogleBoocsSearch.xaml;
 
 True
 
