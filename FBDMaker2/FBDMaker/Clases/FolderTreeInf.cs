@@ -319,6 +319,48 @@ namespace FBDMaker
                 OpenFiles();
         }
 
+        private void DeleteFileFromArch (string ArchName, string DelFileName)
+        {
+            SevenZipExtractor se = new SevenZipExtractor(FPath); //new SevenZipExtractor(tmpMemStrea);
+                                                                 //tempstr.Close();
+                                                                 //tempstr.Dispose();
+            if( se.ArchiveFileData.Where(afi => afi.FileName.Equals(DelFileName)).Any())
+            {
+                string ArchType = Path.GetExtension(ArchName);
+                if (ArchType.ToLower() == ".zip" || ArchType.ToLower() == ".7z" || ArchType.ToLower() == ".7zip")
+                {
+                    int indexZip = se.ArchiveFileData.First(archiveFileInfo => archiveFileInfo.FileName.Equals(DelFileName)).Index;
+                    SevenZipCompressor FileCompres = new SevenZipCompressor();
+                    //FileCompres.CompressionMode = File.Exists(ArchName) ? CompressionMode.Append : CompressionMode.Create;
+                    Dictionary<int, string> dictionary = new Dictionary<int, string>();
+                    dictionary.Add(indexZip, null);
+
+                    switch (ArchType.ToLower())
+                    {
+                        case ".zip":
+                            FileCompres.ArchiveFormat = OutArchiveFormat.Zip;
+                            break;
+                        default:
+                            FileCompres.ArchiveFormat = OutArchiveFormat.SevenZip;
+                            break;
+                    }
+                    FileCompres.ModifyArchive(ArchName, dictionary);
+                }
+                if (FType.ToLower() == ".rar")
+                {
+                    Process RarProc = new Process();
+                    RarProc.StartInfo.FileName = Environment.CurrentDirectory + "\\rar.exe";
+                    RarProc.StartInfo.Arguments = "d " + ArchName + " " + DelFileName; //-r 
+                    RarProc.StartInfo.UseShellExecute = false;
+                    RarProc.Start();
+                    RarProc.WaitForExit();
+                }
+                               
+                
+            }
+            se.Dispose();
+           
+        }
         private void AddFileToArch(string ArchName, string AddFileName, bool PreserveDirectoryRoot=true )
         {
             string ArchType = Path.GetExtension(ArchName);
@@ -517,6 +559,7 @@ namespace FBDMaker
 
                 if ((ParsedFileInArch || Option.InsertFBDArch_Yes)&&IsArch)
                 {
+                    DeleteFileFromArch(FPath, Path.GetFileName((ParsedRootDir == string.Empty ? pathFBD : ParsedRootDir)));
                     AddFileToArch(FPath, (ParsedRootDir == string.Empty ? pathFBD : ParsedRootDir));
                 }
 

@@ -10,3 +10,9 @@ D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csprojResolveAssemb
 D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csproj.CoreCompileInputs.cache
 D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.dll
 D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.pdb
+e:\Бекап\my\FBDMaker\fb2librarynet\bin\Debug\FB2Library.dll
+e:\Бекап\my\FBDMaker\fb2librarynet\bin\Debug\FB2Library.pdb
+e:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csprojResolveAssemblyReference.cache
+e:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csproj.CoreCompileInputs.cache
+e:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.dll
+e:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.pdb
