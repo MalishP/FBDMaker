@@ -4,3 +4,9 @@ V:\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csprojAssemblyReference.cache
 V:\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csproj.CoreCompileInputs.cache
 V:\FBDMaker\fb2librarynet\obj\Debug\FB2Library.dll
 V:\FBDMaker\fb2librarynet\obj\Debug\FB2Library.pdb
+D:\Бекап\my\FBDMaker\fb2librarynet\bin\Debug\FB2Library.dll
+D:\Бекап\my\FBDMaker\fb2librarynet\bin\Debug\FB2Library.pdb
+D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csprojResolveAssemblyReference.cache
+D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.csproj.CoreCompileInputs.cache
+D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.dll
+D:\Бекап\my\FBDMaker\fb2librarynet\obj\Debug\FB2Library.pdb
